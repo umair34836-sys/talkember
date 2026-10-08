@@ -364,3 +364,11 @@ html { scroll-behavior: smooth; }
 .deploy-status { margin: 0 0 var(--space-2); font-weight: 600; }
 .deploy-log { white-space: pre-wrap; font-size: .8rem; max-height: 260px; overflow: auto; margin: var(--space-2) 0 0; }
 .admin-nav .btn { white-space: nowrap; flex-shrink: 0; }
+
+/* hero with illustration (Canva) */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); gap: var(--space-8); align-items: center; }
+.hero-art { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); }
+img.brand-mark { background: none; object-fit: cover; }
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: var(--space-6); }
+}
