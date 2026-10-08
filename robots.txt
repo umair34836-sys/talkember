@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin
+Disallow: /search
+
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://firecraft.fun/sitemap.xml
+Sitemap: https://firecraft.fun/news-sitemap.xml
