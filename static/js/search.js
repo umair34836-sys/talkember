@@ -1,5 +1,6 @@
 // Client-side search for the static (GitHub Pages) build.
 (async () => {
+  const BASE = ''; // set by the build when the site lives in a sub-folder
   const q = (new URLSearchParams(location.search).get('q') || '').trim();
   const input = document.getElementById('q-page');
   const results = document.getElementById('search-results');
@@ -12,7 +13,7 @@
 
   let index = [];
   try {
-    index = await (await fetch('/search-index.json')).json();
+    index = await (await fetch(`${BASE}/search-index.json`)).json();
   } catch {
     empty.textContent = 'Search is not available right now.';
     empty.hidden = false;
@@ -43,12 +44,12 @@
   results.innerHTML = scored
     .map(({ p }) => `
       <article class="card" lang="${esc(p.l)}">
-        <a class="card-media" href="/${esc(p.u)}" tabindex="-1" aria-hidden="true">
-          ${p.i ? `<img src="${esc(p.i)}" alt="" width="640" height="360" loading="lazy">` : `<span class="card-fallback">${esc(p.c.slice(0, 1))}</span>`}
+        <a class="card-media" href="${BASE}/${esc(p.u)}" tabindex="-1" aria-hidden="true">
+          ${p.i ? `<img src="${p.i.startsWith('/') ? BASE : ''}${esc(p.i)}" alt="" width="640" height="360" loading="lazy">` : `<span class="card-fallback">${esc(p.c.slice(0, 1))}</span>`}
         </a>
         <div class="card-body">
           <p class="card-kicker">${esc(p.c)}</p>
-          <h3 class="card-title"><a href="/${esc(p.u)}">${esc(p.t)}</a></h3>
+          <h3 class="card-title"><a href="${BASE}/${esc(p.u)}">${esc(p.t)}</a></h3>
           ${p.s ? `<p class="card-summary">${esc(p.s)}</p>` : ''}
           <p class="card-meta muted small">${esc(p.d)}</p>
         </div>
