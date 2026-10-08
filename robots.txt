@@ -5,5 +5,5 @@ Disallow: /search
 User-agent: Mediapartners-Google
 Allow: /
 
-Sitemap: https://firecraft.fun/sitemap.xml
-Sitemap: https://firecraft.fun/news-sitemap.xml
+Sitemap: https://talkember.site/sitemap.xml
+Sitemap: https://talkember.site/news-sitemap.xml
