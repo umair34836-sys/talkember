@@ -45,7 +45,7 @@
     .map(({ p }) => `
       <article class="card" lang="${esc(p.l)}">
         <a class="card-media" href="${BASE}/${esc(p.u)}" tabindex="-1" aria-hidden="true">
-          ${p.i ? `<img src="${p.i.startsWith('/') ? BASE : ''}${esc(p.i)}" alt="" width="640" height="360" loading="lazy">` : `<span class="card-fallback">${esc(p.c.slice(0, 1))}</span>`}
+          ${p.i ? `<img src="${p.i.startsWith('/') ? BASE : ''}${esc(p.i)}" alt="" width="640" height="360" loading="lazy">${p.b ? `<span class="thumb-label">${esc(p.b)}</span>` : ''}` : `<span class="card-fallback">${esc(p.c.slice(0, 1))}</span>`}
         </a>
         <div class="card-body">
           <p class="card-kicker">${esc(p.c)}</p>

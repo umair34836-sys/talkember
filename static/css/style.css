@@ -372,3 +372,23 @@ img.brand-mark { background: none; object-fit: cover; }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: var(--space-6); }
 }
+
+/* 2–3 word thumbnail label over the cover photo */
+.card-media::after, .cover-media::after { content: ''; position: absolute; inset: 40% 0 0; background: linear-gradient(to top, rgb(0 0 0 / .72), transparent); pointer-events: none; }
+.card-media:not(:has(.thumb-label))::after, .cover-media:not(:has(.thumb-label))::after { display: none; }
+.cover-media { position: relative; border-radius: var(--radius); overflow: hidden; }
+.cover-media img { border-radius: 0; }
+.thumb-label {
+  position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); z-index: 1;
+  color: #fff; font: 800 clamp(1.05rem, 2.6vw, 1.5rem)/1.05 var(--font-body); letter-spacing: .02em; text-transform: uppercase;
+  text-shadow: 0 2px 8px rgb(0 0 0 / .55); overflow-wrap: anywhere;
+}
+.thumb-label::before { content: ''; display: block; width: 36px; height: 4px; margin-bottom: 8px; border-radius: 2px; background: var(--color-accent); }
+.card-big .thumb-label { font-size: clamp(1.4rem, 3.4vw, 2.2rem); }
+.thumb-label-lg { left: var(--space-6); bottom: var(--space-6); font-size: clamp(1.6rem, 4.5vw, 3rem); }
+.card-media .badge ~ .thumb-label, .card-media .thumb-label ~ .badge { bottom: auto; }
+.card-media .badge { z-index: 2; top: var(--space-3); bottom: auto; }
+
+/* Thumbnails carry their own 2–3 word text, so never crop them: keep the big card at 16:9 too */
+.card-big { align-items: center; }
+.card-big .card-media { aspect-ratio: 16 / 9; min-height: 0; }
